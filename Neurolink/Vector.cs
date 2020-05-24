@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Neurolink
+﻿namespace Neurolink
 {
     class Vector
     {
