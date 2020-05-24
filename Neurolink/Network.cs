@@ -145,7 +145,10 @@ namespace Neurolink
                     UpdateWeights(alpha); // обновление весовых коэффициентов
                 }
 
-                Console.WriteLine("epoch: {0}, error: {1}", epoch, error); // выводим в консоль номер эпохи и величину ошибку
+                if (epoch % 10000 == 0)
+                {
+                    Console.WriteLine("epoch: {0}, error: {1}", epoch, error); // выводим в консоль номер эпохи и величину ошибку
+                }
 
                 epoch++; // увеличиваем номер эпохи
             } while (epoch <= epochs && error > eps);
