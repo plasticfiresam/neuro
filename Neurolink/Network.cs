@@ -11,11 +11,11 @@ namespace Neurolink
             public Vector df; // производная функции активации слоя
         }
 
-        Matrix[] weights; // матрицы весов слоя
-        LayerT[] L; // значения на каждом слое
-        Vector[] deltas; // дельты ошибки на каждом слое
+        readonly Matrix[] weights; // матрицы весов слоя
+        readonly LayerT[] L; // значения на каждом слое
+        readonly Vector[] deltas; // дельты ошибки на каждом слое
 
-        int layersN; // число слоёв
+        readonly int layersN; // число слоёв
 
         // создание сети из массива количества нейронов в каждом слое
         public Network(int[] sizes)
@@ -81,7 +81,7 @@ namespace Neurolink
         }
 
         // обратное распространение
-        void Backward(Vector output, ref double error)
+        private void Backward(Vector output, ref double error)
         {
             int last = layersN - 1;
 
@@ -111,7 +111,7 @@ namespace Neurolink
         }
 
         // обновление весовых коэффициентов, alpha - скорость обучения
-        void UpdateWeights(double alpha)
+        private void UpdateWeights(double alpha)
         {
             for (int k = 0; k < layersN; k++)
             {
